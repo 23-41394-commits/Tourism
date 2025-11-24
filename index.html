@@ -6,85 +6,109 @@
   <title>Mabini Tourism</title>
   <style>
     /* Sticky Navbar */
-.navbar {
-  background-color: #0077b6;
-  padding: 15px 30px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+    .navbar {
+      background-color: #0077b6;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1100px;
-  margin: auto;
-}
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+    }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-}
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
 
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-.nav-links li a:hover {
-  color: #90e0ef;
-}
+    .nav-links li a:hover {
+      color: #90e0ef;
+    }
 
-/* Hamburger menu icon - hidden on desktop */
-.menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  color: white;
-  cursor: pointer;
-}
+    /* Contact button in navbar - plain text like other links (no oblong) */
+    .contact-btn {
+      background: transparent !important;
+      color: white !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      font-weight: 700;
+      border: none !important;
+      box-shadow: none !important;
+      transition: color 0.18s ease;
+    }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
+    /* Hover should only change color (same as other nav links) */
+    .contact-btn:hover,
+    .nav-links li a.contact-btn:hover {
+      background: transparent !important;
+      color: #90e0ef !important;
+      box-shadow: none !important;
+    }
 
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 30px;
-    background: #0077b6;
-    flex-direction: column;
-    width: 200px;
-    padding: 20px;
-    border-radius: 8px;
-  }
+    .contact-btn:focus, .contact-btn:active { outline: none; box-shadow: none; background: transparent }
 
-  .nav-links.active {
-    display: flex;
-  }
+    
 
-  .nav-links li {
-    margin-bottom: 15px;
-  }
+    /* Hamburger menu icon - hidden on desktop */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
 
-  .nav-links li:last-child {
-    margin-bottom: 0;
-  }
-}
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 30px;
+        background: #0077b6;
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin-bottom: 15px;
+      }
+
+      .nav-links li:last-child {
+        margin-bottom: 0;
+      }
+    }
 
     /* Reset */
     * {
@@ -94,13 +118,20 @@
       font-family: Arial, sans-serif;
     }
 
+    /* Smooth scrolling for in-page links */
+    html { scroll-behavior: smooth; }
+
+    html, body { height: 100%; }
     body {
       line-height: 1.6;
-      color: #333;
+      color: #213547;
+      /* Stronger, more visible ocean-themed gradient to match navbar */
+      background: linear-gradient(180deg, #d7f3fb 0%, #e6f7fb 40%, #ffffff 100%);
+      background-attachment: fixed;
     }
 
     header {
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') 
+      background: url('Anilao-Beach.jpg') 
         no-repeat center center/cover;
       height: 100vh;
       display: flex;
@@ -141,7 +172,25 @@
       padding: 60px 20px;
       max-width: 1100px;
       margin: auto;
+      background: transparent; /* let page gradient show through */
+      scroll-margin-top: 90px; /* offset for fixed navbar */
     }
+
+    /* Contact section styles */
+    .contact-section {
+      background: rgba(255,255,255,0.95);
+      border-radius: 10px;
+      padding: 28px;
+      box-shadow: 0 8px 20px rgba(33,53,71,0.06);
+      margin-top: 24px;
+    }
+    .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:start }
+    .contact-item h4{ margin-bottom:8px; color: #023e8a }
+    .contact-item p{ margin:0 0 12px 0; color:#405a6b }
+    .contact-form input, .contact-form textarea{ width:100%; padding:10px 12px; border:1px solid #e6eef3; border-radius:6px; margin-bottom:10px; font-size:0.95rem }
+    .contact-form button{ background: #0077b6; color:#ffffff; padding:10px 16px; border-radius:8px; border:0; font-weight:700; transition: background 0.3s ease; }
+    .contact-form button:hover{ background: #023e8a; }
+    @media(max-width:800px){ .contact-grid{ grid-template-columns: 1fr } }
 
     section h2 {
       text-align: center;
@@ -153,6 +202,8 @@
     .about {
       text-align: center;
       margin-bottom: 60px;
+      /* Offset anchor scroll so fixed navbar doesn't cover the heading */
+      scroll-margin-top: 90px;
     }
 
     .destinations {
@@ -198,33 +249,33 @@
     }
 
     .logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-}
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color:  white;
+    }
 
-.logo-img {
-  height: 40px; /* Adjust size as needed */
-  margin-right: 10px;
-}
-
+    .logo-img {
+      height: 40px; /* Adjust size as needed */
+      margin-right: 10px;
+    }
   </style>
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar">
+  <!-- Navbar -->
+  <nav class="navbar">
     <div class="nav-container">
-        <div class="logo">
-            <img src="logo.png" alt="Logo" class="logo-img">
-            <span>Mabini Tourism</span>
-          </div>          
+      <div class="logo">
+        <img src="logo.png" alt="Logo" class="logo-img">
+        <span>Mabini Tourism</span>
+      </div>          
       <div class="menu-toggle" id="mobile-menu">&#9776;</div>
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">Welcome</a></li>
         <li><a href="#destinations">Destinations</a></li>
         <li><a href="#map">Map</a></li>
+        <li><a href="#contact" class="contact-btn">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -233,56 +284,80 @@
   <header>
     <h1>Discover Mabini</h1>
     <p>Adventure by the Sea, Peace by the Shore </p>
-   
   </header>
 
   <!-- About Section -->
-  <section class="about">
+  <section id="about" class="about">
     <h2>Welcome to Mabini</h2>
     <p>
-        Mabini, Batangas is a beautiful coastal town with clear beaches, amazing dive spots, and scenic views of the sea and mountains. Whether you want an underwater adventure or a relaxing getaway by the shore, Mabini has something for everyone.
+      Mabini, Batangas is a beautiful coastal town with clear beaches, amazing dive spots, and scenic views of the sea and mountains. Whether you want an underwater adventure or a relaxing getaway by the shore, Mabini has something for everyone.
     </p>
-  </section
+  </section>
 
   <!-- Destinations Section -->
-<section id="destinations">
-  <h2>Top Destinations</h2>
-  <div class="destinations">
-    <div class="card">
-      <img src="beach.jpg" alt="Beach">
-      <h3>Anilao Diving Spots</h3>
-      <p>Experience one of the Philippines’ premier dive sites with colorful coral reefs and rich marine life.</p>
+  <section id="destinations">
+    <h2>Top Destinations</h2>
+    <div class="destinations">
+      <div class="card">
+        <img src="beach.jpg" alt="Beach">
+        <h3>Anilao Diving Spots</h3>
+        <p>Experience one of the Philippines' premier dive sites with colorful coral reefs and rich marine life.</p>
+      </div>
+      <div class="card">
+        <img src="resort.jpg" alt="Beach View">
+        <h3>Batangas Beaches</h3>
+        <p>Relax on pristine beaches and enjoy the calm waves, perfect for family getaways.</p>
+      </div>
+      <div class="card">
+        <img src="mountain.jpg" alt="Mountain View">
+        <h3>Mt. Gulugod Baboy</h3>
+        <p>Take a scenic hike with panoramic views of Mabini Batangas.</p>
+      </div>
     </div>
-    <div class="card">
-      <img src="resort.jpg" alt="Beach View">
-      <h3>Batangas Beaches</h3>
-      <p>Relax on pristine beaches and enjoy the calm waves, perfect for family getaways.</p>
-    </div>
-    <div class="card">
-      <img src="mountain.jpg" alt="Mountain View">
-      <h3>Mt. Gulugod Baboy</h3>
-      <p>Take a scenic hike with panoramic views of Mabini Batangas.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Google Map Section -->
-<section id="map">
-  <h2 style="text-align: center; margin-bottom: 20px; color: #0077b6;">Find Us in Mabini</h2>
-  <div style="display: flex; justify-content: center;">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7722.495352527897!2d120.85993087846944!3d13.736595405525998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd03be03f6b8cd%3A0x2db0a4f7d960bb97!2sMabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1694910549082!5m2!1sen!2sph" 
-      width="1000" 
-      height="450" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</section>
+  <!-- Google Map Section -->
+  <section id="map">
+    <h2 style="text-align: center; margin-bottom: 20px; color: #0077b6;">Find Us in Mabini</h2>
+    <div style="display: flex; justify-content: center;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7722.495352527897!2d120.85993087846944!3d13.736595405525998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd03be03f6b8cd%3A0x2db0a4f7d960bb97!2sMabini%2C%20Batangas!5e0!3m2!1sen!2sph!4v1694910549082!5m2!1sen!2sph" 
+        width="1000" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
 
-  <!-- Footer -->
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-section">
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h4>Visit </h4>
+          <p>Anilao East Mabini Batangas</p>
+          <h4>Phone</h4>
+          <p>09701484495</p>
+          <h4>Email</h4>
+          <p>kimgutierrez073@gmail.com</p>
+          <h4>Hours</h4>
+          <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+        </div>
+        <div class="contact-item contact-form">
+          <h4>Send us a message</h4>
+          <input type="text" placeholder="Your name" />
+          <input type="email" placeholder="Your email" />
+          <textarea rows="5" placeholder="Your message"></textarea>
+          <button type="button">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>&copy; 2025 Mabini Tourism. All Rights Reserved.</p>
   </footer>
@@ -290,11 +365,10 @@
   <script>
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
-  
+
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
   </script>
-  
 </body>
 </html>
